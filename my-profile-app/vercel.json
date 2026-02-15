@@ -1,10 +1,7 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/backend/src/main.ts" },
-    { "source": "/(.*)", "destination": "/frontend/index.html" }
-  ],
-  "functions": {
-    "backend/src/main.ts": { "runtime": "@vercel/node" }
-  }
+    { "source": "/api/(.*)", "destination": "/backend/api/main.js" },
+    { "source": "/(.*)", "destination": "/frontend/dist/$1" }
+  ]
 }
