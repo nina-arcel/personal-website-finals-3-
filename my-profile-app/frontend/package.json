@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "preinstall": "echo 'Node version: ' && node --version && echo 'NPM version: ' && npm --version",
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "npx vite build",
+    "preview": "vite preview",
+    "postinstall": "ls -la node_modules/.bin || echo 'No .bin folder'",
+    "vercel-build": "npm install && npx vite build"
   },
   "dependencies": {
     "axios": "^1.6.0",
