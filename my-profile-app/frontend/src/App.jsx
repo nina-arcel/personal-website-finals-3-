@@ -1,50 +1,94 @@
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import './form.css';
 
-// Use environment variable for the backend URL
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api/guestbook';
-
-export default function App() {
+function App() {
+  const [name, setName] = useState('');
+  const [message, setMessage] = useState('');
   const [entries, setEntries] = useState([]);
-  const [form, setForm] = useState({ name: '', message: '' });
 
-  const load = async () => {
-    const res = await fetch(API_URL);
-    setEntries(await res.json());
-  };
+  // Load entries on component mount
+  useEffect(() => {
+    // You'll connect this to your API later
+    const savedEntries = JSON.parse(localStorage.getItem('guestbook') || '[]');
+    setEntries(savedEntries);
+  }, []);
 
-  useEffect(() => { load(); }, []);
+  // Save entries when they change
+  useEffect(() => {
+    localStorage.setItem('guestbook', JSON.stringify(entries));
+  }, [entries]);
 
-  const save = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    await fetch(API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    });
-    setForm({ name: '', message: '' });
-    load();
-  };
-
-  const remove = async (id) => {
-    await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
-    load();
+    
+    if (name.trim() && message.trim()) {
+      const newEntry = {
+        id: Date.now().toString(),
+        name: name,
+        message: message,
+        created_at: new Date().toISOString()
+      };
+      
+      setEntries([newEntry, ...entries]);
+      setName('');
+      setMessage('');
+    }
   };
 
   return (
-    <div style={{ maxWidth: '600px', margin: 'auto', padding: '2rem' }}>
-      <h1>My Profile & Guestbook</h1>
-      <form onSubmit={save}>
-        <input placeholder="Name" value={form.name} onChange={e => setForm({...form, name: e.target.value})} required />
-        <textarea placeholder="Message" value={form.message} onChange={e => setForm({...form, message: e.target.value})} required />
-        <button type="submit">Sign Guestbook</button>
-      </form>
-      <hr />
-      {entries.map(e => (
-        <div key={e.id}>
-          <p><strong>{e.name}</strong>: {e.message}</p>
-          <button onClick={() => remove(e.id)}>Delete</button>
-        </div>
-      ))}
+    <div className="container">
+      <h1 className="Cal-text">Guestbook</h1>
+      
+      <p>Please fill out the form below to let us know what you think.</p>
+
+      <div id="app">
+        <form onSubmit={handleSubmit}>
+          <p>
+            <label>Name:<br />
+              <input 
+                type="text" 
+                required 
+                placeholder="Your name.." 
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+          </p>
+
+          <p>
+            <label>Message:<br />
+              <textarea 
+                rows="3" 
+                placeholder="Write your message.." 
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+            </label>
+          </p>
+
+          <button type="submit">Sign Guestbook</button>
+        </form>
+
+        {entries.length > 0 && (
+          <>
+            <hr />
+            <div>
+              <p><strong>Recent Guestbook Entries:</strong></p>
+              <ul>
+                {entries.map((entry) => (
+                  <li key={entry.id}>
+                    <strong>{entry.name}</strong>
+                    <br />
+                    <small>{entry.message}</small>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 }
+
+export default App;
