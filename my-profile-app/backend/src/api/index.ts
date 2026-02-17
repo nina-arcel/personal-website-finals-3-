@@ -1,7 +1,19 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from '../src/app.module';
+import { AppModule } from '../app.module';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import express from 'express';
+// This file can export your API functions or re-export from other modules
+export * from '../guestbook.controller';
+export * from '../guestbook.service';
+
+// You can also add any additional API-specific functions here
+export const apiInfo = {
+  name: 'Guestbook API',
+  version: '1.0.0',
+  endpoints: {
+    guestbook: '/api/guestbook'
+  }
+};
 
 const server = express();
 

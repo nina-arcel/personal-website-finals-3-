@@ -1,18 +1,72 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { createClient } from '@supabase/supabase-js';
 
 @Injectable()
 export class GuestbookService {
-  private supabase = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_KEY
-  );
+  private supabase;
 
-  async findAll() { 
-    const { data } = await this.supabase.from('guestbook').select('*').order('created_at', { ascending: false });
+  constructor() {
+    this.supabase = createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_KEY
+    );
+  }
+
+  async create(createGuestbookDto: { name: string; message: string }) {
+    const { data, error } = await this.supabase
+      .from('guestbook_entries')
+      .insert([createGuestbookDto])
+      .select();
+
+    if (error) throw error;
+    return data[0];
+  }
+
+  async findAll() {
+    const { data, error } = await this.supabase
+      .from('guestbook_entries')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
     return data;
   }
-  async create(dto: any) { return await this.supabase.from('guestbook').insert([dto]); }
-  async update(id: string, dto: any) { return await this.supabase.from('guestbook').update(dto).eq('id', id); }
-  async delete(id: string) { return await this.supabase.from('guestbook').delete().eq('id', id); }
+
+  async findOne(id: string) {
+    const { data, error } = await this.supabase
+      .from('guestbook_entries')
+      .select('*')
+      .eq('id', id)
+      .single();
+
+    if (error || !data) {
+      throw new NotFoundException(`Entry with ID ${id} not found`);
+    }
+    return data;
+  }
+
+  async update(id: string, updateGuestbookDto: { name?: string; message?: string }) {
+    await this.findOne(id);
+
+    const { data, error } = await this.supabase
+      .from('guestbook_entries')
+      .update({ ...updateGuestbookDto, updated_at: new Date() })
+      .eq('id', id)
+      .select();
+
+    if (error) throw error;
+    return data[0];
+  }
+
+  async remove(id: string) {
+    await this.findOne(id);
+
+    const { error } = await this.supabase
+      .from('guestbook_entries')
+      .delete()
+      .eq('id', id);
+
+    if (error) throw error;
+    return { message: 'Entry deleted successfully' };
+  }
 }

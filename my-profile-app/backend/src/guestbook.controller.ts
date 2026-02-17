@@ -1,12 +1,43 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 import { GuestbookService } from './guestbook.service';
+
+export class CreateGuestbookDto {
+  name: string;
+  message: string;
+}
+
+export class UpdateGuestbookDto {
+  name?: string;
+  message?: string;
+}
 
 @Controller('api/guestbook')
 export class GuestbookController {
-  constructor(private readonly service: GuestbookService) {}
+  constructor(private readonly guestbookService: GuestbookService) {}
 
-  @Get() getAll() { return this.service.findAll(); }
-  @Post() create(@Body() dto: any) { return this.service.create(dto); }
-  @Put(':id') update(@Param('id') id: string, @Body() dto: any) { return this.service.update(id, dto); }
-  @Delete(':id') remove(@Param('id') id: string) { return this.service.delete(id); }
+  @Post()
+  async create(@Body() createGuestbookDto: CreateGuestbookDto) {
+    return this.guestbookService.create(createGuestbookDto);
+  }
+
+  @Get()
+  async findAll() {
+    return this.guestbookService.findAll();
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return this.guestbookService.findOne(id);
+  }
+
+  @Patch(':id')
+  async update(@Param('id') id: string, @Body() updateGuestbookDto: UpdateGuestbookDto) {
+    return this.guestbookService.update(id, updateGuestbookDto);
+  }
+
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async remove(@Param('id') id: string) {
+    await this.guestbookService.remove(id);
+  }
 }

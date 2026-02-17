@@ -1,16 +1,26 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors(); // Critical for React to talk to Nest
-  await app.listen(3000);
-}
-// Export for Vercel Serverless
-export default async (req: any, res: any) => {
-  const app = await NestFactory.create(AppModule);
-  app.enableCors();
-  const instance = app.getHttpAdapter().getInstance();
-  return instance(req, res);
-};
+  
+  // Enable CORS
+  app.enableCors({
+    origin: process.env.FRONTEND_URL || '*',
+    credentials: true,
+  });
 
+  // Global validation pipe
+  app.useGlobalPipes(new ValidationPipe({
+    whitelist: true,
+    forbidNonWhitelisted: true,
+    transform: true,
+  }));
+
+  const port = process.env.PORT || 3001;
+  await app.listen(port);
+  console.log(`Backend running on: http://localhost:${port}`);
+  console.log(`Guestbook API: http://localhost:${port}/api/guestbook`);
+}
+bootstrap();
