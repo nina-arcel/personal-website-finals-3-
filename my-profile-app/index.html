@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niña's Personal Profile</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Cal+Sans&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/about.css">           
+    <link rel="stylesheet" href="/css/ambitions.css">       
+    <link rel="stylesheet" href="/css/gallery.css">                
+    <link rel="stylesheet" href="/css/guestbookstyle.css">
+    <link rel="stylesheet" href="/css/hobbies.css">
+    <link rel="stylesheet" href="/css/resource.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="main-container">
+        
+        <!-- Profile Content -->
+        <div class="profile-content">
+            
+            <!-- Facebook-Style Profile Header -->
+            <div class="profile-header">
+                <div class="cover-photo">
+                    <img src="/public/assets/cover-photo.png" alt="Cover Photo" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #f8e1ed, #ffc0cb)'">
+                </div>
+                
+                <div class="profile-info">
+                    <div class="profile-picture">
+                        <img src="/public/assets/ProfilePicture.png" alt="Niña Arcel Ramos">
+                    </div>
+                    <div class="profile-details">
+                        <h1 class="profile-name">Niña Arcel R. Ramos</h1>
+                        <p class="profile-handle">@ninyao_o</p>
+                        <div class="profile-bio">
+                            <p>BS Information Technology Student at Asia Pacific College • Ministry Volunteer • Designer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Tabs - NOW WITH 4 TABS -->
+            <div class="profile-tabs">
+                <button class="tab-btn active" onclick="showTab('about')">About</button>
+                <button class="tab-btn" onclick="showTab('skills')">Skills & Interests</button>
+                <button class="tab-btn" onclick="showTab('resources')">Resources</button>
+                <button class="tab-btn" onclick="showTab('guestbook')">Guestbook</button>
+            </div>
+
+            <!-- ABOUT TAB (with Gallery) -->
+            <div id="about" class="tab-content active-tab">
+                <!-- About Me Cards -->
+                <div class="about-grid">
+                    <div class="about-card">
+                        <h3>👋 About Me</h3>
+                        <ul class="info-list">
+                            <li><strong>Full Name:</strong> Niña Arcel R. Ramos</li>
+                            <li><strong>Nickname:</strong> Nins</li>
+                            <li><strong>Nationality:</strong> Filipino</li>
+                            <li><strong>Location:</strong> Pasay City, Philippines</li>
+                            <li><strong>Languages:</strong> Filipino, English</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="about-card">
+                        <h3>🎯 Life Goals</h3>
+                        <ul class="info-list">
+                            <li>• Continue serving in our church and become a ministry leader</li>
+                            <li>• Graduate college at Asia Pacific College (APC)</li>
+                            <li>• Travel to different countries</li>
+                            <li>• Build innovative tech solutions for community</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- AMBITIONS SECTION -->
+                <h2 class="Cal-text">Ambitions</h2>
+                <div class="ambitions-container">
+                    <div class="ambition-card">
+                        <h3>💡 Why I Chose IT</h3>
+                        <p>My Grade 12 research project focused on Convolutional Neural Networks (CNN) and Machine Learning. This experience introduced me to technology in a deeper way and inspired me to pursue IT in college.</p>
+                    </div>
+                    
+                    <div class="ambition-card">
+                        <h3>🚀 Skills I Want to Improve</h3>
+                        <p>• Strengthen my programming skills<br>• Improve how I build and structure program logic<br>• Improve my public speaking skills</p>
+                    </div>
+                    
+                    <div class="ambition-card">
+                        <h3>🎯 My Life Goals</h3>
+                        <p>• Continue serving in our church and become a ministry leader<br>• Graduate college at Asia Pacific College (APC)<br>• Travel to different countries</p>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PICTURE GALLERY -->
+                <h2 class="apple-text">Niña's Picture Gallery</h2>
+                
+                <!-- Slideshow Gallery -->
+                <div class="gallery-container">
+                    <!-- Full-width slides -->
+                    <div class="mySlides"><div class="numbertext">1 / 11</div><img src="/public/assets/Family2.png" style="width:100%"></div>
+                    <div class="mySlides"><div class="numbertext">2 / 11</div><img src="/public/assets/Family.png" style="width:100%"></div>
+                    <div class="mySlides"><div class="numbertext">3 / 11</div><img src="/public/assets/Concert.png" style="width:100%"></div>
+                    <div class="mySlides"><div class="numbertext">4 / 11</div><img src="/public/assets/Youth.png" style="width:100%"></div>
+                    <div class="mySlides"><div class="numbertext">5 / 11</div><img src="/public/assets/PAW2.jpg" style="width:100%"></div>
+                    <div class="mySlides"><div class="numbertext">6 / 11</div><img src="/public/assets/DG.png" style="width:100%"></div>
+                    <div class="mySlides"><div class="numbertext">7 / 11</div><img src="/public/assets/Friend.png" style="width:100%"></div>
+                    <div class="mySlides"><div class="numbertext">8 / 11</div><img src="/public/assets/Friend2.png" style="width:100%"></div>
+                    <div class="mySlides"><div class="numbertext">9 / 11</div><img src="/public/assets/CollegeFriends.png" style="width:100%"></div>
+                    <div class="mySlides"><div class="numbertext">10 / 11</div><img src="/public/assets/PAW.png" style="width:100%"></div>
+                    <div class="mySlides"><div class="numbertext">11 / 11</div><img src="/public/assets/CE.jpg" style="width:100%"></div>
+
+                    <!-- Navigation buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
+
+                    <!-- Caption -->
+                    <div class="caption-container">
+                        <p id="caption"></p>
+                    </div>
+
+                    <!-- Thumbnail images -->
+                    <div class="row">
+                        <div class="column"><img class="demo cursor" src="/public/assets/Family2.png" onclick="currentSlide(1)" alt="Family trip at Hong Kong"></div>
+                        <div class="column"><img class="demo cursor" src="/public/assets/Family.png" onclick="currentSlide(2)" alt="Family Picture"></div>
+                        <div class="column"><img class="demo cursor" src="/public/assets/Concert.png" onclick="currentSlide(3)" alt="My First Concert"></div>
+                        <div class="column"><img class="demo cursor" src="/public/assets/Youth.png" onclick="currentSlide(4)" alt="Youth Ministry Members"></div>
+                        <div class="column"><img class="demo cursor" src="/public/assets/PAW2.jpg" onclick="currentSlide(5)" alt="Praise & Worship Members"></div>
+                        <div class="column"><img class="demo cursor" src="/public/assets/DG.png" onclick="currentSlide(6)" alt="My Discipleship Group"></div>
+                        <div class="column"><img class="demo cursor" src="/public/assets/Friend.png" onclick="currentSlide(7)" alt="My Friend since elementary"></div>
+                        <div class="column"><img class="demo cursor" src="/public/assets/Friend2.png" onclick="currentSlide(8)" alt="My Friend since High School"></div>
+                        <div class="column"><img class="demo cursor" src="/public/assets/CollegeFriends.png" onclick="currentSlide(9)" alt="College Friends"></div>
+                        <div class="column"><img class="demo cursor" src="/public/assets/PAW.png" onclick="currentSlide(10)" alt="Singing at Church"></div>
+                        <div class="column"><img class="demo cursor" src="/public/assets/CE.jpg" onclick="currentSlide(11)" alt="Teaching Kids at Church"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SKILLS & INTERESTS TAB -->
+            <div id="skills" class="tab-content">
+                <div class="about-card">
+                    <h3>💻 Technical Skills</h3>
+                    <div class="skills-container">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Outsystems</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Canva</span>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <div class="about-card">
+                    <h3>🎨 Hobbies & Interests</h3>
+                    
+                    <div class="hobby-section">
+                        <h4>🏓 Playing Table Tennis</h4>
+                        <div class="image-grid-2 square-images">
+                            <img src="/public/assets/TableTennis.jpg" alt="Table Tennis">
+                            <img src="/public/assets/TableTennis2.jpg" alt="Table Tennis 2">
+                        </div>
+                    </div>
+                    
+                    <div class="hobby-section">
+                        <h4>🎤 Singing</h4>
+                        <div class="image-grid-2 square-images">
+                            <img src="/public/assets/Youth2.jpg" alt="Singing">
+                            <img src="/public/assets/Singing.png" alt="Singing 2">
+                        </div>
+                    </div>
+                    
+                    <div class="hobby-section">
+                        <h4>🎨 Designing digital posters</h4>
+                        <p>Here are some of my creations from Church Ministry and School Events.</p>
+                        <div class="image-grid-4 square-images">
+                            <img src="/public/assets/TShirt.png" alt="T-Shirt Design">
+                            <img src="/public/assets/Poster.png" alt="Poster">
+                            <img src="/public/assets/Poster2.png" alt="Poster 2">
+                            <img src="/public/assets/Poster3.png" alt="Poster 3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESOURCES TAB -->
+            <div id="resources" class="tab-content">
+                <div class="about-card">
+                    <h3>Resource Documentation</h3>
+                    
+                    <div class="resource-grid">
+                        <div class="resource-card">
+                            <h4>AI Assistance</h4>
+                            <ul class="resource-list">
+                                <li><a href="https://chatgpt.com/share/695bca01-47a4-800c-94c5-a38a266d4702" target="_blank">ChatGPT Queries</a></li>
+                                <li><a href="https://gemini.google.com/share/3878fceb63d1" target="_blank">Google Gemini Queries</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <h4>W3 Schools Resources</h4>
+                            <ul class="resource-list">
+                                <li><a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_grid" target="_blank">CSS Grid</a></li>
+                                <li><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_slideshow_gallery" target="_blank">Slide Show Gallery</a></li>
+                                <li><a href="https://www.w3schools.com/vue/tryit.php?filename=tryvue_forms_shoppingList3" target="_blank">Survey Form</a></li>
+                                <li><a href="https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox" target="_blank">Flexbox</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <h4>Google Fonts</h4>
+                            <ul class="resource-list">
+                                <li><a href="https://fonts.google.com/specimen/Homemade+Apple" target="_blank">Homemade Apple Font</a></li>
+                                <li><a href="https://fonts.google.com/specimen/Cal+Sans" target="_blank">Cal Sans Font</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GUESTBOOK TAB -->
+            <div id="guestbook" class="tab-content">
+                <div class="about-card">
+                    <h3>📝 Guestbook</h3>
+                    <p>Leave a message for me!</p>
+                    <div id="guestbook-root"></div>
+                </div>
+            </div>
+        </div> <!-- Close profile-content -->
+    </div> <!-- Close main-container -->
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/public/js/scripts.js"></script>
+    <script src="/public/js/galleryscript.js"></script>
+    
+    <!-- Guestbook React Dependencies -->
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    
+    <!-- Guestbook Built Files -->
+    <script type="module" src="/assets/index-CtqjxyJk.js"></script>
+    <link rel="stylesheet" href="/assets/index-BZFU7v4D.css">
+</body>
+</html>

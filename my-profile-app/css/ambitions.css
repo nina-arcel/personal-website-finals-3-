@@ -1,0 +1,66 @@
+/* ===== AMBITIONS CONTAINER ===== */
+.ambitions-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 30px 0;
+}
+
+.ambition-card {
+    background: white;
+    padding: 28px 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ambition-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+
+.ambition-card h3 {
+    color: #333;
+    margin-bottom: 16px;
+    font-size: 1.3rem;
+}
+
+.ambition-card p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media screen and (max-width: 992px) {
+    .ambitions-container {
+        gap: 16px;
+    }
+    
+    .ambition-card {
+        padding: 20px 16px;
+    }
+    
+    .ambition-card h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ambitions-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .ambitions-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .ambition-card {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,176 @@
+/* ===== GALLERY CONTAINER ===== */
+.gallery-container {
+    position: relative;
+    max-width: 100%;
+    margin: 30px 0;
+}
+
+/* ===== SLIDES ===== */
+.mySlides {
+    display: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.mySlides img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== NUMBER TEXT (1/11 etc) ===== */
+.numbertext {
+    color: white;
+    font-size: 14px;
+    padding: 10px 16px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 30px;
+    font-weight: 500;
+    z-index: 10;
+}
+
+/* ===== NAVIGATION BUTTONS ===== */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    background-color: rgba(251, 255, 0, 0.4);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    z-index: 20;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.prev:hover, .next:hover {
+    background-color: #f8e1ed;
+    color: #333;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* ===== CAPTION ===== */
+.caption-container {
+    text-align: center;
+    background-color: #f8e1ed;
+    padding: 16px;
+    color: #333;
+    margin: 20px 0;
+    border-radius: 50px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* ===== THUMBNAIL ROW ===== */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.column {
+    flex: 0 0 calc(9.09% - 8px); /* 11 columns */
+    min-width: 60px;
+}
+
+/* ===== THUMBNAIL IMAGES ===== */
+.demo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 8px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.demo:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.demo.active {
+    opacity: 1;
+    border: 2px solid #f8e1ed;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ===== CURSOR ===== */
+.cursor {
+    cursor: pointer;
+}
+
+/* ===== RESPONSIVE ===== */
+@media screen and (max-width: 992px) {
+    .column {
+        flex: 0 0 calc(16.66% - 8px); /* 6 columns */
+    }
+    
+    .prev, .next {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .column {
+        flex: 0 0 calc(25% - 8px); /* 4 columns */
+    }
+    
+    .prev, .next {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+    
+    .prev { left: 10px; }
+    .next { right: 10px; }
+    
+    .numbertext {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .column {
+        flex: 0 0 calc(33.33% - 5px); /* 3 columns */
+    }
+    
+    .prev, .next {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+    
+    .caption-container {
+        font-size: 0.9rem;
+        padding: 12px;
+    }
+}
