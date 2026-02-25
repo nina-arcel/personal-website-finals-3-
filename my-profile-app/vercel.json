@@ -2,25 +2,26 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/api/index.ts",
-      "use": "@vercel/node"
+      "src": "index.html",
+      "use": "@vercel/static"
     },
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "outputDirectory": "build"
-      }
+      "src": "public/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "css/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "frontend/build/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "backend/api/index.ts"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "/frontend/build/assets/$1"
+      "src": "/",
+      "dest": "/index.html"
     },
     {
       "src": "/css/(.*)",
@@ -31,8 +32,8 @@
       "dest": "/public/$1"
     },
     {
-      "src": "/",
-      "dest": "/index.html"
+      "src": "/assets/(.*)",
+      "dest": "/frontend/build/assets/$1"
     }
   ]
 }
